@@ -1,0 +1,32 @@
+.Item {
+  display: flex;
+  max-width: 600px;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: rgb(231, 197, 219);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
+
+.Image {
+  max-width: 300px;
+  height: 398px;
+  margin: 10px;
+  object-fit: cover;
+}
+.div {
+  margin: 10px;
+  & > ul {
+    color: red;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  & > .Description {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-style: italic;
+    text-decoration: solid;
+  }
+}

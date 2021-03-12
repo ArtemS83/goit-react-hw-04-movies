@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-03-image-finder",
+  "name": "goit-react-hw-04-movies",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://artems83.github.io/goit-react-hw-03-image-finder",
+  "homepage": "https://artems83.github.io/goit-react-hw-04-movies",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -16,8 +16,10 @@
     "react-icons": "^4.2.0",
     "react-jss": "^10.5.1",
     "react-loader-spinner": "^4.0.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "shortid": "^2.2.16",
+    "sweetalert": "^2.1.2",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.0"
   },

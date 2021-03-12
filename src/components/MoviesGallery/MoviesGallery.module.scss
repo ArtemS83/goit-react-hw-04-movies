@@ -1,4 +1,4 @@
-.ImageGallery {
+.MoviesGallery {
   display: grid;
   max-width: calc(100vw - 48px);
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -9,4 +9,9 @@
   list-style: none;
   margin-left: auto;
   margin-right: auto;
+}
+svg {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
 }
