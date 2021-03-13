@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import moviesApi from 'services/moviesApi';
 import MoviesGallery from 'components/MoviesGallery';
 
-const HomePage = () => {
+const HomePage = props => {
+  // console.log(props.match.url);
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {

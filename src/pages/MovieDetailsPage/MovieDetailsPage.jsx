@@ -1,15 +1,20 @@
 import { useState, useEffect } from 'react';
 import moviesApi from 'services/moviesApi';
-import defaultImage from 'images/default.jpg';
+import MovieItem from 'components/MovieItem';
+import NotFound from '../NotFound';
+
+// import defaultImage from 'images/default.jpg';
 import Loader from 'react-loader-spinner';
-import style from './MovieDetailsPage.module.scss';
+// import style from './MovieDetailsPage.module.scss';
 
 const MovieDetailsPage = props => {
   const [idMovie, setIdMovie] = useState(Number(props.match.params.movieId));
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [genress, setGenress] = useState([]);
-
+  const [isHasMovie, setIsHasMovie] = useState(0);
+  // console.log(props.match);
+  // const { match } = props;
   useEffect(() => {
     setIsLoading(true);
     moviesApi
@@ -17,16 +22,14 @@ const MovieDetailsPage = props => {
       .then(({ data }) => {
         setMovie(data);
         setGenress(data.genres);
+        setIsHasMovie(1);
       })
-      .catch(error => console.log('ERROR: ', error))
+      .catch(error => {
+        setIsHasMovie(0);
+        console.log('ERROR: ', error);
+      })
       .finally(() => setIsLoading(false));
   }, [idMovie]);
-
-  const { poster_path, original_title, release_date, overview } = movie;
-
-  const srcImage = poster_path
-    ? `https://image.tmdb.org/t/p/w300${poster_path}`
-    : defaultImage;
 
   return (
     <>
@@ -37,27 +40,11 @@ const MovieDetailsPage = props => {
         width={70}
         visible={isLoading}
       />
-      <div className={style.Item}>
-        <img
-          className={style.Image}
-          src={srcImage}
-          alt={`Film ${original_title} poster`}
-        />
-        <div className={style.div}>
-          <h2> {original_title} </h2>
-          {genress.length > 0 && (
-            <ul>
-              {genress.map(({ id, name }) => (
-                <li key={id}>{name}</li>
-              ))}
-            </ul>
-          )}
-
-          <p className={style.Description}>Description:</p>
-          <p className={style.Description}> {overview}</p>
-          <p>Date: {release_date}</p>
-        </div>
-      </div>
+      {!isLoading && isHasMovie > 0 ? (
+        <MovieItem movie={movie} genress={genress} />
+      ) : (
+        <NotFound />
+      )}
     </>
   );
 };

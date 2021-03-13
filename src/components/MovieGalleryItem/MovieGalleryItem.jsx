@@ -4,6 +4,7 @@ import defaultImage from 'images/default.jpg';
 import style from './MovieGalleryItem.module.scss';
 
 const MovieGalleryItem = ({ title, src, date, id }) => {
+  // console.log(match.url);
   const srcImage = src ? `https://image.tmdb.org/t/p/w300${src}` : defaultImage;
   return (
     <li className={style.Item}>

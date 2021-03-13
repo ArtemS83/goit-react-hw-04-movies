@@ -4,11 +4,11 @@ import Searchbar from 'components/Searchbar';
 import MoviesGallery from 'components/MoviesGallery';
 import swal from 'sweetalert';
 
-const MoviesPage = () => {
+const MoviesPage = props => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  // console.log(props.match);
+  // console.log(props.match.url);//4????
 
   useEffect(() => {
     if (query === '') {

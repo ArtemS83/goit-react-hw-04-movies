@@ -44,3 +44,8 @@ export default {
   fetchMovieReviews,
   fetchMovieCast,
 };
+
+// fetch(url).then(response => {
+//             if (response.ok) {
+//                 return response.json();
+//             }
