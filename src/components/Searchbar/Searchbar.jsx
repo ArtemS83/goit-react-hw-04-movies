@@ -54,8 +54,10 @@ const Searchbar = ({ onSubmit }) => {
   };
 
   const hendelSubmit = e => {
+    if (value === '') return; ////
     e.preventDefault();
     onSubmit(value);
+    setValue(''); //?????
   };
 
   return (
@@ -64,7 +66,7 @@ const Searchbar = ({ onSubmit }) => {
         className={classes.SearchFormInput}
         type="text"
         value={value}
-        autoComplete="on"
+        autoComplete="off"
         autoFocus
         placeholder="Search movies"
         onChange={hendelChangeInput}

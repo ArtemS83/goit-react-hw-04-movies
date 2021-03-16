@@ -30,7 +30,7 @@ const Cast = ({ match }) => {
       />
       <ul className={style.CastList}>
         {casts.map(({ id, name, character, profile_path }) => (
-          <li key={id} className={style.Item}>
+          <li key={`${id}+${character}`} className={style.Item}>
             <img
               className={style.Image}
               src={

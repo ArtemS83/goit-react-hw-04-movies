@@ -2,7 +2,7 @@ import { NavLink, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import defaultImage from 'images/default.jpg';
 import Cast from 'components/Cast';
-import Reviews from 'components/Cast copy';
+import Reviews from 'components/Reviews';
 import style from './MovieItem.module.scss';
 
 const MovieItem = ({ movie, genress }) => {
@@ -47,6 +47,10 @@ const MovieItem = ({ movie, genress }) => {
             Cast
           </NavLink>
           <NavLink
+            // to={{
+            //   pathname: `/movies/${id}/reviews`,
+            //   search: '?category=adventure',
+            // }}
             to={`/movies/${id}/reviews`}
             className={style.link}
             activeClassName={style.activeLink}

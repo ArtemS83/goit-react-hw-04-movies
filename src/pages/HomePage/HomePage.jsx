@@ -2,22 +2,28 @@ import { useState, useEffect } from 'react';
 import moviesApi from 'services/moviesApi';
 import MoviesGallery from 'components/MoviesGallery';
 
-const HomePage = props => {
+const HomePage = () => {
   // console.log(props.match.url);
   const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
     moviesApi
       .fetchMovies()
       .then(({ results }) => {
-        setMovies(prevMovies => [...prevMovies, ...results]);
+        setMovies(results);
+        //  setMovies(prevMovies => [...prevMovies, ...results]);
       })
-      .catch(error => console.log('ERROR: ', error))
-      .finally(() => setIsLoading(false));
+      .catch(error => console.log('ERROR: ', error));
+    // .finally(() => setIsLoading(false));
   }, []);
 
-  return <MoviesGallery movies={movies} isLoading={isLoading} />;
+  return (
+    <>
+      <h1 style={{ textAlign: 'center' }}>Trending today movies</h1>
+      <MoviesGallery movies={movies} />
+    </>
+  );
 };
 
 export default HomePage;

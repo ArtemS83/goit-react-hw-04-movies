@@ -1,7 +1,7 @@
 .Item {
-  // display: flex;
   max-width: 600px;
   margin: 10px;
+  padding: 10px;
   background-color: #fff;
   border-radius: 4px;
   overflow: hidden;
@@ -30,6 +30,9 @@
     margin-bottom: 5px;
     font-style: italic;
     text-decoration: solid;
+  }
+  & h2 {
+    margin-bottom: 10px;
   }
 }
 .DescriptionTitle {

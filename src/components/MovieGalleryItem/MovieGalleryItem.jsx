@@ -26,13 +26,14 @@ const MovieGalleryItem = ({ title, src, date, id }) => {
   );
 };
 
-// MovieGalleryItem.defaultProps = {
-//   src: defaultImage,
-// };
+MovieGalleryItem.defaultProps = {
+  src: defaultImage,
+  date: 'Not date',
+};
 MovieGalleryItem.propTypes = {
   title: PropTypes.string.isRequired,
   src: PropTypes.string,
-  date: PropTypes.string.isRequired,
+  date: PropTypes.string,
 };
 
 export default MovieGalleryItem;

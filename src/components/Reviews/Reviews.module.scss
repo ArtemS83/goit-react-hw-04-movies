@@ -3,13 +3,13 @@
   padding: 15px;
 }
 .Item {
-  // width: 100px;
-  // display: flex;
-  margin-bottom: 20px;
-  // margin-right: 10px;
+  margin-bottom: 15px;
   border-bottom: 1px solid #2a2a2a;
   border-right: 1px solid #2a2a2a;
   & p {
     margin-top: 8px;
   }
+}
+.NotReviews {
+  margin: 15px;
 }

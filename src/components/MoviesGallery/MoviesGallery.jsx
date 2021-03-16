@@ -1,19 +1,14 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import PropTypes from 'prop-types';
 import MovieGalleryItem from '../MovieGalleryItem';
-import Loader from 'react-loader-spinner';
+// import Loader from 'react-loader-spinner';
+import Loader1 from 'components/Loader1';
 import style from './MoviesGallery.module.scss';
 
-const MoviesGallery = ({ movies, isLoading }) => {
+const MoviesGallery = ({ movies, isLoading = false }) => {
   return (
     <>
-      <Loader
-        type="Puff"
-        color="#fff"
-        height={70}
-        width={70}
-        visible={isLoading}
-      />
+      <Loader1 isLoading={isLoading} />
       <ul className={style.MoviesGallery}>
         {movies.map(({ id, title, poster_path, release_date }) => (
           <MovieGalleryItem
@@ -36,7 +31,7 @@ MoviesGallery.propTypes = {
       id: PropTypes.number.isRequired,
     }),
   ).isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 export default MoviesGallery;
