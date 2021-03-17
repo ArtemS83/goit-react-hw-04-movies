@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import moviesApi from 'services/moviesApi';
 import MoviesGallery from 'components/MoviesGallery';
 
-const HomePage = () => {
-  // console.log(props.match.url);
+const HomePage = props => {
+  // console.log('props.location.state', props.location.pathname);
   const [movies, setMovies] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -21,7 +21,8 @@ const HomePage = () => {
   return (
     <>
       <h1 style={{ textAlign: 'center' }}>Trending today movies</h1>
-      <MoviesGallery movies={movies} />
+      <MoviesGallery movies={movies} props={props} />
+      {/* <MoviesGallery movies={movies} /> */}
     </>
   );
 };

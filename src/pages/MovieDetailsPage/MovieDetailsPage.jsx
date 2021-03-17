@@ -10,7 +10,7 @@ const MovieDetailsPage = props => {
   const [movie, setMovie] = useState({});
   const [genress, setGenress] = useState([]);
   const [isNotMovie, setIsNotMovie] = useState(0);
-  // console.log(props.match);
+  // console.log('MovieDetailsPage', props.location.state);
   // const { match } = props;
   useEffect(() => {
     moviesApi
@@ -31,9 +31,12 @@ const MovieDetailsPage = props => {
 
   return (
     <>
-      <Button onClick={hendelGoBack} />
+      {/* <Button onClick={hendelGoBack} /> */}
       {!isNotMovie ? (
-        <MovieItem movie={movie} genress={genress} />
+        <>
+          <Button onClick={hendelGoBack} />
+          <MovieItem movie={movie} genress={genress} props={props} />
+        </>
       ) : (
         <NotFound />
       )}

@@ -5,12 +5,14 @@ import Cast from 'components/Cast';
 import Reviews from 'components/Reviews';
 import style from './MovieItem.module.scss';
 
-const MovieItem = ({ movie, genress }) => {
+const MovieItem = ({ movie, genress, props }) => {
+  // console.log('MovieItem', props.location);
   const { poster_path, original_title, release_date, overview, id } = movie;
   // console.log(match.url);
   const srcImage = poster_path
     ? `https://image.tmdb.org/t/p/w300${poster_path}`
     : defaultImage;
+
   return (
     <>
       <div className={style.Item}>
@@ -22,36 +24,49 @@ const MovieItem = ({ movie, genress }) => {
           />
           <div className={style.div}>
             <h2> {original_title} </h2>
-            <p className={style.DescriptionTitle}>Genres:</p>
             {genress.length > 0 && (
-              <ul>
-                {genress.map(({ id, name }) => (
-                  <li key={id}>{name}</li>
-                ))}
-              </ul>
+              <>
+                <p className={style.DescriptionTitle}>Genres:</p>
+                <ul>
+                  {genress.map(({ id, name }) => (
+                    <li key={id}>{name}</li>
+                  ))}
+                </ul>
+              </>
             )}
-
-            <p className={style.DescriptionTitle}>Description:</p>
-            <p className={style.Description}> {overview}</p>
-            <p>Date:</p>
-            <p>{release_date}</p>
+            {overview && (
+              <>
+                <p className={style.DescriptionTitle}>Description:</p>
+                <p className={style.Description}> {overview}</p>
+              </>
+            )}
+            {release_date && (
+              <>
+                <p>Date:</p>
+                <p>{release_date}</p>
+              </>
+            )}
           </div>
         </div>
 
         <div className={style.Link}>
           <NavLink
-            to={`/movies/${id}/cast`}
+            // to={`/movies/${id}/cast`}
+            to={{
+              pathname: `/movies/${id}/cast`,
+              state: props.location.state,
+            }}
             className={style.link}
             activeClassName={style.activeLink}
           >
             Cast
           </NavLink>
           <NavLink
-            // to={{
-            //   pathname: `/movies/${id}/reviews`,
-            //   search: '?category=adventure',
-            // }}
-            to={`/movies/${id}/reviews`}
+            // to={`/movies/${id}/reviews`}
+            to={{
+              pathname: `/movies/${id}/reviews`,
+              state: props.location.state,
+            }}
             className={style.link}
             activeClassName={style.activeLink}
           >

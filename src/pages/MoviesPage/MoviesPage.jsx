@@ -6,7 +6,6 @@ import swal from 'sweetalert';
 import queryString from 'query-string';
 
 const MoviesPage = props => {
-  // const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState(
@@ -15,18 +14,23 @@ const MoviesPage = props => {
   // console.log('queryString.parse', queryString.parse(props.location.search));
   // // console.log(props.match.url);//4????
   // console.log(props.location);
-  useEffect(() => {
-    props.history.push({
-      ...props.location,
-      search: query ? `?query=${query}` : '',
-    });
-  }, [query]);
+  // useEffect(() => {
+  //   props.history.push({
+  //     ...props.location,
+  //     search: query ? `?query=${query}` : '',
+  //   });
+  // }, [query]);
 
   useEffect(() => {
     setQuery(queryString.parse(props.location.search).query);
   }, [props.location.search]);
 
   useEffect(() => {
+    props.history.push({
+      ...props.location,
+      search: query ? `?query=${query}` : '',
+    });
+
     if (query === '' || !query) {
       setMovies([]);
       return;
@@ -37,7 +41,7 @@ const MoviesPage = props => {
       .then(({ results }) => {
         if (results.length === 0) {
           swal('Oops!', 'Please enter a more specific querry!', 'error');
-          // return; //////?????
+          setQuery('');
         }
         setMovies(results);
       })
@@ -46,7 +50,6 @@ const MoviesPage = props => {
   }, [query]);
 
   const hendelSearchMovie = queryMovie => {
-    // setFilter(queryMovie.trim());
     setQuery(queryMovie.trim());
   };
 
@@ -57,6 +60,7 @@ const MoviesPage = props => {
         movies={movies}
         isLoading={isLoading}
         // match={props.match}
+        props={props}
       />
     </>
   );

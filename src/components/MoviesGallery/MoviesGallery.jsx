@@ -5,13 +5,15 @@ import MovieGalleryItem from '../MovieGalleryItem';
 import Loader1 from 'components/Loader1';
 import style from './MoviesGallery.module.scss';
 
-const MoviesGallery = ({ movies, isLoading = false }) => {
+const MoviesGallery = ({ movies, isLoading = false, props }) => {
+  // console.log(location);
   return (
     <>
       <Loader1 isLoading={isLoading} />
       <ul className={style.MoviesGallery}>
         {movies.map(({ id, title, poster_path, release_date }) => (
           <MovieGalleryItem
+            props={props}
             key={id}
             id={id}
             title={title}

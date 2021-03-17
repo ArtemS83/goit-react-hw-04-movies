@@ -28,26 +28,30 @@ const Cast = ({ match }) => {
         width={70}
         visible={isLoading}
       />
-      <ul className={style.CastList}>
-        {casts.map(({ id, name, character, profile_path }) => (
-          <li key={`${id}+${character}`} className={style.Item}>
-            <img
-              className={style.Image}
-              src={
-                profile_path
-                  ? `https://image.tmdb.org/t/p/w300${profile_path}`
-                  : defaultImage
-              }
-              loading="lazy"
-              alt={`Foto ${name}`}
-            />
-            <div className={style.div}>
-              <h3>{name}</h3>
-              <p>{character}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {casts.length > 0 ? (
+        <ul className={style.CastList}>
+          {casts.map(({ id, name, character, profile_path }) => (
+            <li key={`${id}+${character}`} className={style.Item}>
+              <img
+                className={style.Image}
+                src={
+                  profile_path
+                    ? `https://image.tmdb.org/t/p/w300${profile_path}`
+                    : defaultImage
+                }
+                loading="lazy"
+                alt={`Foto ${name}`}
+              />
+              <div className={style.div}>
+                <h3>{name}</h3>
+                <p>{character}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className={style.NotCasts}>Not casts for this movie</p>
+      )}
     </>
   );
 };
