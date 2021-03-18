@@ -54,10 +54,10 @@ const Searchbar = ({ onSubmit }) => {
   };
 
   const hendelSubmit = e => {
-    if (value === '') return; ////
+    if (value === '') return;
     e.preventDefault();
     onSubmit(value);
-    setValue(''); //?????
+    setValue('');
   };
 
   return (

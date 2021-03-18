@@ -1,14 +1,13 @@
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink, Route, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import defaultImage from 'images/default.jpg';
 import Cast from 'components/Cast';
 import Reviews from 'components/Reviews';
 import style from './MovieItem.module.scss';
 
-const MovieItem = ({ movie, genress, props }) => {
-  // console.log('MovieItem', props.location);
+const MovieItem = ({ movie, genress, location }) => {
   const { poster_path, original_title, release_date, overview, id } = movie;
-  // console.log(match.url);
+
   const srcImage = poster_path
     ? `https://image.tmdb.org/t/p/w300${poster_path}`
     : defaultImage;
@@ -51,10 +50,9 @@ const MovieItem = ({ movie, genress, props }) => {
 
         <div className={style.Link}>
           <NavLink
-            // to={`/movies/${id}/cast`}
             to={{
               pathname: `/movies/${id}/cast`,
-              state: props.location.state,
+              state: location.state,
             }}
             className={style.link}
             activeClassName={style.activeLink}
@@ -62,10 +60,9 @@ const MovieItem = ({ movie, genress, props }) => {
             Cast
           </NavLink>
           <NavLink
-            // to={`/movies/${id}/reviews`}
             to={{
               pathname: `/movies/${id}/reviews`,
-              state: props.location.state,
+              state: location.state,
             }}
             className={style.link}
             activeClassName={style.activeLink}
@@ -88,4 +85,4 @@ MovieItem.propTypes = {
   genress: PropTypes.array,
 };
 
-export default MovieItem;
+export default withRouter(MovieItem);

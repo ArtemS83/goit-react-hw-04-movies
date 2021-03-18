@@ -1,5 +1,5 @@
-// import Loader from 'react-loader-spinner';
 import Loader2 from 'react-loader';
+
 const Loader1 = ({ isLoading = true }) => {
   return (
     <Loader2

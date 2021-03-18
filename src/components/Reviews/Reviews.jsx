@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import moviesApi from 'services/moviesApi';
-import defaultImage from 'images/default.jpg';
 import Loader from 'react-loader-spinner';
 import style from './Reviews.module.scss';
 

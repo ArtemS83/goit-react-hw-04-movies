@@ -2,11 +2,6 @@ import { lazy, Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import AppBar from 'components/AppBar';
 import Loader1 from 'components/Loader1';
-// import HomePage from 'pages/HomePage';
-// import MoviesPage from 'pages/MoviesPage';
-// import MovieDetailsPage from 'pages/MovieDetailsPage';
-// import NotFound from 'pages/NotFound';
-// import Loader from 'react-loader-spinner';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
@@ -20,11 +15,6 @@ const useStyles = createUseStyles({
       marginRight: 'auto',
       marginLeft: 'auto',
     },
-    // '& div': {
-    //   display: 'block',
-    //   marginRight: 'auto',
-    //   marginLeft: 'auto',
-    // },
   },
 });
 
