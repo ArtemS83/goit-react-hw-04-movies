@@ -5,7 +5,7 @@ import Cast from 'components/Cast';
 import Reviews from 'components/Reviews';
 import style from './MovieItem.module.scss';
 
-const MovieItem = ({ movie, genress, location }) => {
+const MovieItem = ({ movie, genress, location, match }) => {
   const { poster_path, original_title, release_date, overview, id } = movie;
 
   const srcImage = poster_path
@@ -51,7 +51,11 @@ const MovieItem = ({ movie, genress, location }) => {
         <div className={style.Link}>
           <NavLink
             to={{
-              pathname: `/movies/${id}/cast`,
+              pathname:
+                // match.isExact || location.pathname === `/movies/${id}/reviews`
+                match.isExact || location.pathname !== `/movies/${id}/cast`
+                  ? `/movies/${id}/cast`
+                  : match.url, //match.url=>`/movies/${id}`
               state: location.state,
             }}
             className={style.link}
@@ -61,7 +65,10 @@ const MovieItem = ({ movie, genress, location }) => {
           </NavLink>
           <NavLink
             to={{
-              pathname: `/movies/${id}/reviews`,
+              pathname:
+                match.isExact || location.pathname !== `/movies/${id}/reviews`
+                  ? `/movies/${id}/reviews`
+                  : match.url, //match.url=>`/movies/${id}`
               state: location.state,
             }}
             className={style.link}

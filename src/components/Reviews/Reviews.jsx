@@ -3,7 +3,9 @@ import moviesApi from 'services/moviesApi';
 import Loader from 'react-loader-spinner';
 import style from './Reviews.module.scss';
 
-const Reviews = ({ match }) => {
+const Reviews = ({ match, location }) => {
+  // console.log('Reviews match ', match.isExact);
+  // console.log('Reviews location ', location);
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const id = Number(match.params.movieId);
